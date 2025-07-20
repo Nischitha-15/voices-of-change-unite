@@ -196,22 +196,23 @@ const PostPanel = ({ isOpen, onClose, problemTitle, problemCategory }: PostPanel
         </DialogHeader>
 
         <div className="flex flex-col h-[calc(95vh-180px)]">
-          {/* New Post Section */}
-          <Card className="mb-6">
-            <CardHeader>
-              <h3 className="font-semibold">Share Your Story</h3>
-              <p className="text-sm text-muted-foreground">
+          {/* New Post Section - Reduced Height */}
+          <Card className="mb-4">
+            <CardHeader className="pb-3">
+              <h3 className="font-semibold text-sm">Share Your Story</h3>
+              <p className="text-xs text-muted-foreground">
                 Your voice matters. Share your experience to help others feel less alone.
               </p>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-3 pt-0">
               <Textarea
                 placeholder="Share your story, thoughts, or support for others..."
                 value={newPost}
                 onChange={(e) => setNewPost(e.target.value)}
-                rows={4}
+                rows={2}
+                className="resize-none"
               />
-              <Button onClick={handleAddPost} variant="hero" className="w-full">
+              <Button onClick={handleAddPost} variant="hero" className="w-full" size="sm">
                 <Plus className="h-4 w-4 mr-2" />
                 Share Your Story
               </Button>

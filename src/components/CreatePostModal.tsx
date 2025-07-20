@@ -102,10 +102,10 @@ const CreatePostModal = ({ isOpen, onClose }: CreatePostModalProps) => {
               </Label>
               <Textarea
                 id="post-content"
-                placeholder="Your story can inspire others. Share your experience, challenges, victories, or thoughts. This is a safe space where your voice will be heard and respected..."
+                placeholder="Your story can inspire others. Share your experience, challenges, victories, or thoughts..."
                 value={postContent}
                 onChange={(e) => setPostContent(e.target.value)}
-                className="mt-2 min-h-[120px] resize-none"
+                className="mt-2 min-h-[80px] resize-none"
                 maxLength={1000}
               />
               <div className="text-right text-xs text-muted-foreground mt-1">
