@@ -10,6 +10,23 @@ const Header = () => {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const { toast } = useToast();
 
+  const socialProblems = [
+    { title: "Domestic Violence", category: "Safety & Support", description: "Support and resources for survivors of domestic violence." },
+    { title: "Workplace Discrimination", category: "Professional Rights", description: "Addressing gender inequality and pay gaps in professional environments." },
+    { title: "Harassment", category: "Safety & Support", description: "Creating safe spaces to discuss experiences with harassment." },
+    { title: "Education Inequality", category: "Education & Growth", description: "Breaking barriers to education and supporting women's access to learning." },
+    { title: "Period Poverty", category: "Health & Wellness", description: "Addressing the lack of access to menstrual products." },
+    { title: "Child Marriage", category: "Rights & Protection", description: "Advocating against child marriage and supporting those affected." },
+    { title: "Lack of Legal Support", category: "Legal & Rights", description: "Navigating legal challenges and finding accessible legal resources." },
+    { title: "Mental Health", category: "Health & Wellness", description: "Supporting women's mental health and breaking stigmas." },
+    { title: "Economic Empowerment", category: "Financial Rights", description: "Supporting women's financial independence and entrepreneurship." },
+    { title: "Body Autonomy", category: "Health & Rights", description: "Advocating for women's rights over their own bodies and reproductive choices." },
+    { title: "Digital Safety", category: "Safety & Support", description: "Addressing online harassment, cyberbullying, and digital privacy concerns." },
+    { title: "Elder Care Burden", category: "Family & Society", description: "Supporting women who bear disproportionate caregiving responsibilities." },
+    { title: "Political Representation", category: "Leadership & Rights", description: "Encouraging women's participation in politics and leadership roles." },
+    { title: "Sports & Recreation Access", category: "Health & Equality", description: "Ensuring equal opportunities in sports and recreational activities." }
+  ];
+
   const handleRandomOption = () => {
     const motivationalQuotes = [
       "Your voice matters. Your story can inspire change.",
@@ -22,6 +39,14 @@ const Header = () => {
     toast({
       title: "💜 Motivation for You",
       description: randomQuote,
+    });
+  };
+
+  const handleRandomProblem = () => {
+    const randomProblem = socialProblems[Math.floor(Math.random() * socialProblems.length)];
+    toast({
+      title: `🎲 Random Focus: ${randomProblem.title}`,
+      description: `${randomProblem.description} Category: ${randomProblem.category}`,
     });
   };
 
@@ -50,7 +75,7 @@ const Header = () => {
                 <Heart className="h-4 w-4 mr-2" />
                 Motivational Quote
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem onClick={handleRandomProblem}>
                 <Shuffle className="h-4 w-4 mr-2" />
                 Random Problem
               </DropdownMenuItem>
@@ -103,7 +128,7 @@ const Header = () => {
                 <Heart className="h-4 w-4 mr-2" />
                 Motivational Quote
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem onClick={handleRandomProblem}>
                 <Shuffle className="h-4 w-4 mr-2" />
                 Random Problem
               </DropdownMenuItem>
