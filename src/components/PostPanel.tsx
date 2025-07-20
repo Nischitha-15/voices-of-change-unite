@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { X, Heart, MessageCircle, Share2, Plus, Trash2, Edit } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import SocialShareModal from "./SocialShareModal";
 
 interface Post {
   id: string;
@@ -39,6 +40,8 @@ const PostPanel = ({ isOpen, onClose, problemTitle, problemCategory }: PostPanel
   const [activeCommentPost, setActiveCommentPost] = useState<string | null>(null);
   const [editingPost, setEditingPost] = useState<string | null>(null);
   const [editContent, setEditContent] = useState("");
+  const [shareModalOpen, setShareModalOpen] = useState(false);
+  const [shareData, setShareData] = useState({ title: "", text: "", url: "" });
   const bottomRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
 
@@ -164,20 +167,18 @@ const PostPanel = ({ isOpen, onClose, problemTitle, problemCategory }: PostPanel
   };
 
   const handleShare = (post: Post) => {
-    // In a real app, this would integrate with actual social sharing APIs
-    if (navigator.share) {
-      navigator.share({
-        title: `Story from ${problemTitle}`,
-        text: post.content.substring(0, 100) + "...",
-        url: window.location.href,
-      });
-    } else {
-      navigator.clipboard.writeText(window.location.href);
-      toast({
-        title: "Link copied!",
-        description: "Share this story to spread awareness.",
-      });
-    }
+    const shareTitle = `Story from ${problemTitle} - Voices of Change Unite`;
+    const shareText = post.content.length > 200 
+      ? post.content.substring(0, 200) + "..."
+      : post.content;
+    const shareUrl = window.location.href;
+
+    setShareData({
+      title: shareTitle,
+      text: shareText,
+      url: shareUrl
+    });
+    setShareModalOpen(true);
   };
 
   return (
@@ -363,6 +364,13 @@ const PostPanel = ({ isOpen, onClose, problemTitle, problemCategory }: PostPanel
           </div>
         </div>
       </DialogContent>
+
+      {/* Social Share Modal */}
+      <SocialShareModal
+        isOpen={shareModalOpen}
+        onClose={() => setShareModalOpen(false)}
+        shareData={shareData}
+      />
     </Dialog>
   );
 };
