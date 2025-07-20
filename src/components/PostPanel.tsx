@@ -182,7 +182,7 @@ const PostPanel = ({ isOpen, onClose, problemTitle, problemCategory }: PostPanel
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-hidden">
+      <DialogContent className="max-w-6xl max-h-[95vh] w-[95vw] overflow-hidden">
         <DialogHeader>
           <DialogTitle className="flex items-center justify-between">
             <div>
@@ -195,7 +195,7 @@ const PostPanel = ({ isOpen, onClose, problemTitle, problemCategory }: PostPanel
           </DialogTitle>
         </DialogHeader>
 
-        <div className="flex flex-col h-[calc(90vh-200px)]">
+        <div className="flex flex-col h-[calc(95vh-180px)]">
           {/* New Post Section */}
           <Card className="mb-6">
             <CardHeader>

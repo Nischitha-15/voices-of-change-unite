@@ -57,20 +57,32 @@ const Header = () => {
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm">
+              <Button variant="hero" size="sm">
                 <Settings className="h-4 w-4 mr-2" />
                 Settings
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56">
+            <DropdownMenuContent align="end" className="w-64">
               <DropdownMenuItem>
-                Theme Settings
+                🌙 Dark/Light Theme
               </DropdownMenuItem>
               <DropdownMenuItem>
-                Language Options
+                🌍 Language Options
               </DropdownMenuItem>
               <DropdownMenuItem>
-                Font Size
+                📝 Font Size Settings
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                🔔 Notification Preferences
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                🔒 Privacy Settings
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                📧 Account Settings
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                ❓ Help & Support
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
