@@ -3,16 +3,35 @@ import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import SocialProblemsSection from "@/components/SocialProblemsSection";
 import CreatePostModal from "@/components/CreatePostModal";
+import PostPanel from "@/components/PostPanel";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Heart, Users, MessageCircle, Shield } from "lucide-react";
 
+interface RandomProblem {
+  title: string;
+  category: string;
+  description: string;
+}
+
 const Index = () => {
   const [isCreatePostOpen, setIsCreatePostOpen] = useState(false);
+  const [selectedRandomProblem, setSelectedRandomProblem] = useState<RandomProblem | null>(null);
+  const [isRandomPanelOpen, setIsRandomPanelOpen] = useState(false);
+
+  const handleRandomProblemSelect = (problem: RandomProblem) => {
+    setSelectedRandomProblem(problem);
+    setIsRandomPanelOpen(true);
+  };
+
+  const handleCloseRandomPanel = () => {
+    setIsRandomPanelOpen(false);
+    setSelectedRandomProblem(null);
+  };
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
+      <Header onRandomProblemSelect={handleRandomProblemSelect} />
       
       {/* Hero Section */}
       <section className="relative py-20 px-4 bg-gradient-hero text-primary-foreground">
@@ -134,6 +153,16 @@ const Index = () => {
         isOpen={isCreatePostOpen} 
         onClose={() => setIsCreatePostOpen(false)} 
       />
+
+      {/* Random Problem Panel */}
+      {selectedRandomProblem && (
+        <PostPanel
+          isOpen={isRandomPanelOpen}
+          onClose={handleCloseRandomPanel}
+          problemTitle={selectedRandomProblem.title}
+          problemCategory={selectedRandomProblem.category}
+        />
+      )}
     </div>
   );
 };

@@ -5,7 +5,17 @@ import { Menu, Settings, Shuffle, Heart } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import SettingsModal from "./SettingsModal";
 
-const Header = () => {
+interface RandomProblem {
+  title: string;
+  category: string;
+  description: string;
+}
+
+interface HeaderProps {
+  onRandomProblemSelect?: (problem: RandomProblem) => void;
+}
+
+const Header = ({ onRandomProblemSelect }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const { toast } = useToast();
@@ -44,10 +54,17 @@ const Header = () => {
 
   const handleRandomProblem = () => {
     const randomProblem = socialProblems[Math.floor(Math.random() * socialProblems.length)];
-    toast({
-      title: `🎲 Random Focus: ${randomProblem.title}`,
-      description: `${randomProblem.description} Category: ${randomProblem.category}`,
-    });
+    
+    if (onRandomProblemSelect) {
+      // Open the post panel with the random problem
+      onRandomProblemSelect(randomProblem);
+    } else {
+      // Fallback to showing toast if no callback provided
+      toast({
+        title: `🎲 Random Focus: ${randomProblem.title}`,
+        description: `${randomProblem.description} Category: ${randomProblem.category}`,
+      });
+    }
   };
 
   return (
