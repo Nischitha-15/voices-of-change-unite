@@ -1,10 +1,14 @@
+import { useState } from "react";
 import Header from "@/components/Header";
 import SocialProblemsSection from "@/components/SocialProblemsSection";
+import CreatePostModal from "@/components/CreatePostModal";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Heart, Users, MessageCircle, Shield } from "lucide-react";
 
 const Index = () => {
+  const [isCreatePostOpen, setIsCreatePostOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -22,7 +26,12 @@ const Index = () => {
           <p className="text-xl md:text-2xl mb-8 opacity-90 max-w-3xl mx-auto">
             Join a supportive community where women share their experiences, find strength in solidarity, and create positive change together.
           </p>
-          <Button variant="outline" size="lg" className="bg-white/10 border-white/20 text-white hover:bg-white hover:text-primary">
+          <Button 
+            variant="outline" 
+            size="lg" 
+            className="bg-white/10 border-white/20 text-white hover:bg-white hover:text-primary"
+            onClick={() => setIsCreatePostOpen(true)}
+          >
             <Heart className="h-5 w-5 mr-2" />
             Start Your Journey
           </Button>
@@ -116,6 +125,12 @@ const Index = () => {
           </p>
         </div>
       </footer>
+
+      {/* Create Post Modal */}
+      <CreatePostModal 
+        isOpen={isCreatePostOpen} 
+        onClose={() => setIsCreatePostOpen(false)} 
+      />
     </div>
   );
 };
