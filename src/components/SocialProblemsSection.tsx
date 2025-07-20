@@ -17,6 +17,14 @@ const SocialProblemsSection = () => {
 
   const socialProblems: SocialProblem[] = [
     {
+      id: "0",
+      title: "Your Story",
+      description: "Share your unique journey, experiences, and insights. Every story matters and can inspire others on their path to empowerment.",
+      imageUrl: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=640&h=400&fit=crop",
+      postCount: 423,
+      category: "Personal Journey"
+    },
+    {
       id: "1",
       title: "Domestic Violence",
       description: "Support and resources for survivors of domestic violence. Share your story, find strength, and help others on their healing journey.",

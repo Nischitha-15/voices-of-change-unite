@@ -310,12 +310,17 @@ const PostPanel = ({ isOpen, onClose, problemTitle, problemCategory }: PostPanel
 
                       {/* Comments */}
                       {post.comments.length > 0 && (
-                        <div className="space-y-2 ml-4 border-l-2 border-secondary pl-4">
+                        <div className="space-y-3 mt-4 bg-muted/30 rounded-lg p-4">
+                          <h4 className="font-medium text-sm text-muted-foreground mb-2">
+                            Comments ({post.comments.length})
+                          </h4>
                           {post.comments.map((comment) => (
-                            <div key={comment.id} className="text-sm">
-                              <p className="font-medium">{comment.username}</p>
-                              <p className="text-muted-foreground">{comment.content}</p>
-                              <p className="text-xs text-muted-foreground">{comment.date}</p>
+                            <div key={comment.id} className="bg-background rounded-lg p-3 border border-border/50">
+                              <div className="flex items-center justify-between mb-2">
+                                <p className="font-medium text-sm text-primary">{comment.username}</p>
+                                <p className="text-xs text-muted-foreground">{comment.date}</p>
+                              </div>
+                              <p className="text-sm leading-relaxed">{comment.content}</p>
                             </div>
                           ))}
                         </div>

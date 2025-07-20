@@ -18,6 +18,7 @@ const CreatePostModal = ({ isOpen, onClose }: CreatePostModalProps) => {
   const { toast } = useToast();
 
   const socialProblems = [
+    { id: "0", title: "Your Story", category: "Personal Journey" },
     { id: "1", title: "Domestic Violence", category: "Safety & Support" },
     { id: "2", title: "Workplace Discrimination", category: "Professional Rights" },
     { id: "3", title: "Harassment", category: "Safety & Support" },

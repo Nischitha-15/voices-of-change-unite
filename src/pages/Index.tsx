@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import SocialProblemsSection from "@/components/SocialProblemsSection";
 import CreatePostModal from "@/components/CreatePostModal";
@@ -106,9 +107,11 @@ const Index = () => {
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
             Your experiences matter. By sharing your story, you're not just healing yourself – you're lighting the way for others.
           </p>
-          <Button variant="outline" size="lg" className="bg-white/10 border-white/20 text-white hover:bg-white hover:text-supportive">
-            <Heart className="h-5 w-5 mr-2" />
-            Join Our Community
+          <Button variant="outline" size="lg" className="bg-white/10 border-white/20 text-white hover:bg-white hover:text-supportive" asChild>
+            <Link to="/signin">
+              <Heart className="h-5 w-5 mr-2" />
+              Join Our Community
+            </Link>
           </Button>
         </div>
       </section>
