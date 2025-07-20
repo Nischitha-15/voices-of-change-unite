@@ -3,9 +3,11 @@ import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Menu, Settings, Shuffle, Heart } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import SettingsModal from "./SettingsModal";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const { toast } = useToast();
 
   const handleRandomOption = () => {
@@ -63,25 +65,25 @@ const Header = () => {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-64">
-              <DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setIsSettingsOpen(true)}>
                 🌙 Dark/Light Theme
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setIsSettingsOpen(true)}>
                 🌍 Language Options
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setIsSettingsOpen(true)}>
                 📝 Font Size Settings
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setIsSettingsOpen(true)}>
                 🔔 Notification Preferences
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setIsSettingsOpen(true)}>
                 🔒 Privacy Settings
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setIsSettingsOpen(true)}>
                 📧 Account Settings
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setIsSettingsOpen(true)}>
                 ❓ Help & Support
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -105,7 +107,7 @@ const Header = () => {
                 <Shuffle className="h-4 w-4 mr-2" />
                 Random Problem
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setIsSettingsOpen(true)}>
                 <Settings className="h-4 w-4 mr-2" />
                 Settings
               </DropdownMenuItem>
@@ -113,6 +115,8 @@ const Header = () => {
           </DropdownMenu>
         </div>
       </div>
+      
+      <SettingsModal isOpen={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} />
     </header>
   );
 };
